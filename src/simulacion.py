@@ -1,7 +1,7 @@
 import simpy
 import numpy as np
 
-from src.teoria import es_estable, metricas_teoricas
+from src.teoria import es_estable
 
 
 def simular(lam, mu, tiempo_simulacion=1000, semilla=42):
