@@ -39,6 +39,7 @@ def simular(lam, mu, tiempo_simulacion=1000, semilla=42):
     tiempos_espera = []
     tiempos_sistema = []
     tamanos_cola = []
+    muestras_cola = []
 
     clientes_llegados = 0
     clientes_atendidos = 0
@@ -52,6 +53,8 @@ def simular(lam, mu, tiempo_simulacion=1000, semilla=42):
 
         # Registrar cuantos clientes esperan al llegar
         tamanos_cola.append(len(servidor.queue))
+        muestras_cola.append((env.now, len(servidor.queue)))
+        
 
         # Solicitar el servidor
         with servidor.request() as solicitud:
@@ -113,4 +116,8 @@ def simular(lam, mu, tiempo_simulacion=1000, semilla=42):
             if tamanos_cola else 0.0
         ),
         "tiempo_simulacion": tiempo_simulacion,
+        "tiempos_espera": tiempos_espera,
+        "muestras_cola": muestras_cola,
     }
+
+simular_mm1 = simular
