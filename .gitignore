@@ -3,3 +3,6 @@
 
 # Local agent tooling
 .atl/
+.venv/
+__pycache__/
+.pytest_cache/
