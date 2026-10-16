@@ -29,6 +29,14 @@ def test_simulacion_es_reproducible_con_la_misma_semilla():
     assert resultado_1 == resultado_2
 
 
+def test_muestras_cola_registran_llegadas_e_inicios_de_servicio():
+    resultados = simular(2.0, 3.0, 100, semilla=42)
+
+    # One sample when each customer arrives and another when service starts.
+    esperados = resultados["clientes_llegados"] + len(resultados["tiempos_espera"])
+    assert len(resultados["muestras_cola"]) == esperados
+
+
 def test_sistema_inestable_lanza_error():
     with pytest.raises(ValueError, match="El sistema no es estable"):
         simular(3.0, 3.0, 100)

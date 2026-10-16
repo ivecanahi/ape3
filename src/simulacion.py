@@ -64,6 +64,9 @@ def simular(lam, mu, tiempo_simulacion=1000, semilla=42):
             inicio_servicio = env.now
             tiempos_espera.append(inicio_servicio - llegada)
 
+            # Registrar la cola cuando el cliente sale de ella
+            muestras_cola.append((env.now, len(servidor.queue)))
+
             # Generar duracion aleatoria del servicio
             tiempo_servicio = rng.exponential(1 / mu)
 
