@@ -36,9 +36,7 @@ def ejecutar_escenario(lam, mu):
     }
 
 def tabla_comparativa(resultados, ruta="resultados/tabla.csv"):
-    print(" | ".join(f"{c:>15}" for c in COLUMNAS))
-    for fila in resultados:
-        print(" | ".join(f"{fila[c]:>15.3f}" for c in COLUMNAS))
+    """Save the comparison table as CSV (console output lives in src/consola.py)."""
     with open(ruta, "w", newline="") as archivo:
         escritor = csv.DictWriter(archivo, fieldnames=COLUMNAS, extrasaction="ignore")
         escritor.writeheader()
